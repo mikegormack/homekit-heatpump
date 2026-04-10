@@ -8,6 +8,10 @@
 			"windows": {
 				"command": "${config:idf.pythonBinPathWin} ${config:idf.espIdfPathWin}\\tools\\idf.py build",
 				"options": {
+					"shell": {
+						"executable": "cmd.exe",
+						"args": ["/d", "/c"]
+					},
 					"env": {
 						"PATH": "${env:PATH};${config:idf.customExtraPaths}"
 					}
@@ -67,6 +71,10 @@
 			"windows": {
 				"command": "${config:idf.pythonBinPathWin} ${config:idf.espIdfPathWin}\\tools\\idf.py fullclean",
 				"options": {
+					"shell": {
+						"executable": "cmd.exe",
+						"args": ["/d", "/c"]
+					},
 					"env": {
 						"PATH": "${env:PATH};${config:idf.customExtraPaths}"
 					}
@@ -102,6 +110,10 @@
 			"windows": {
 				"command": "${config:idf.pythonBinPathWin} ${config:idf.espIdfPathWin}\\tools\\idf.py erase_flash -p ${config:idf.portWin} -b ${config:idf.flashBaudRate}",
 				"options": {
+					"shell": {
+						"executable": "cmd.exe",
+						"args": ["/d", "/c"]
+					},
 					"env": {
 						"PATH": "${env:PATH};${config:idf.customExtraPaths}"
 					}
@@ -137,6 +149,10 @@
 			"windows": {
 				"command": "${config:idf.pythonBinPathWin} ${config:idf.espIdfPathWin}\\tools\\idf.py flash -p ${config:idf.portWin} -b ${config:idf.flashBaudRate}",
 				"options": {
+					"shell": {
+						"executable": "cmd.exe",
+						"args": ["/d", "/c"]
+					},
 					"env": {
 						"PATH": "${env:PATH};${config:idf.customExtraPaths}"
 					}
@@ -172,6 +188,10 @@
 			"windows": {
 				"command": "${config:idf.pythonBinPathWin} ${config:idf.espIdfPathWin}\\tools\\idf.py -p ${config:idf.portWin} monitor",
 				"options": {
+					"shell": {
+						"executable": "cmd.exe",
+						"args": ["/d", "/c"]
+					},
 					"env": {
 						"PATH": "${env:PATH};${config:idf.customExtraPaths}"
 					}
