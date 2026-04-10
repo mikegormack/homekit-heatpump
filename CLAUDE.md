@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-HomeKit-compatible smart sprinkler/watering control system for ESP32. Built on ESP-IDF 5.4.1 with the HomeKit Accessory Protocol (HAP) SDK.
+HomeKit-compatible heat pump controller for ESP32. Built on ESP-IDF 5.4.1 with the HomeKit Accessory Protocol (HAP) SDK.
 
 ## Build & Flash Commands
 
@@ -23,7 +23,7 @@ VSCode tasks (`.vscode/tasks.json`) also provide these as task shortcuts.
 ## Architecture
 
 ### Application Entry Point (`main/`)
-- `app_main.cpp` — Initializes all hardware (I2C, OLED, MCP23017, ADC), creates UI, configures HAP accessory (name: "Sprinkler", model: S1, CID: HAP_CID_SPRINKLER), registers HAP read/write callbacks. Note: `hap_start()` and `app_wifi_handler_start()` are currently commented out pending feature completion.
+- `app_main.cpp` — Initializes all hardware (I2C, OLED, MCP23017, ADC), creates UI, configures HAP accessory (name: "Heat Pump", model: S1, CID: HAP_CID_SPRINKLER), registers HAP read/write callbacks. Note: `hap_start()` and `app_wifi_handler_start()` are currently commented out pending feature completion.
 - `app_wifi_handler.cpp` — WiFi provisioning via BLE (with QR code) or SoftAP, plus hardcoded credential fallback for development.
 
 ### Components (`components/`)

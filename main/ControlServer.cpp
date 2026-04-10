@@ -18,7 +18,7 @@ static const char *CONTROL_HTML = R"html(<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Sprinkler Control</title>
+  <title>Heat Pump Control</title>
   <style>
     body  { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 0 16px; }
     h1    { font-size: 1.4em; }
@@ -39,7 +39,7 @@ static const char *CONTROL_HTML = R"html(<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <h1>Sprinkler Control</h1>
+  <h1>Heat Pump Control</h1>
 
   <div class="card">
     <h2>Valve Status</h2>

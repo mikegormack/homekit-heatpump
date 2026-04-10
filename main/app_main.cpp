@@ -83,11 +83,11 @@ static std::shared_ptr<MCP23017>   ioexp_p;
 static MenuCtx menu_ctx;
 static int32_t s_tz_idx = 0;
 
-static const char* TAG = "HAP Sprinkler";
+static const char* TAG = "HAP Heatpump";
 
-#define SPRINKLER_TASK_PRIORITY  1
-#define SPRINKLER_TASK_STACKSIZE 4 * 1024
-#define SPRINKLER_TASK_NAME      "hap_sprinkler"
+#define HEATPUMP_TASK_PRIORITY  1
+#define HEATPUMP_TASK_STACKSIZE 4 * 1024
+#define HEATPUMP_TASK_NAME      "hap_heatpump"
 
 /* The button "Boot" will be used as the Reset button for the example */
 #define RESET_GPIO GPIO_NUM_0
@@ -105,7 +105,7 @@ static void reset_key_init(uint32_t key_gpio_pin)
  * In a real accessory, something like LED blink should be implemented
  * got visual identification
  */
-static int sprinkler_identify(hap_acc_t* ha)
+static int heatpump_identify(hap_acc_t* ha)
 {
 	ESP_LOGI(TAG, "Accessory identified");
 	return HAP_SUCCESS;
@@ -115,7 +115,7 @@ static int sprinkler_identify(hap_acc_t* ha)
  * An optional HomeKit Event handler which can be used to track HomeKit
  * specific events.
  */
-static void sprinkler_hap_event_handler(void* arg, esp_event_base_t event_base, int32_t event, void* data)
+static void heatpump_hap_event_handler(void* arg, esp_event_base_t event_base, int32_t event, void* data)
 {
 	switch (event)
 	{
@@ -181,8 +181,8 @@ static bool ioexp_init(i2c_master_bus_handle_t i2c_port)
 	return true;
 }
 
-/*The main thread for handling the Fan Accessory */
-static void sprinkler_thread_entry(void* p)
+/*The main thread for handling the Heatpump Accessory */
+static void heatpump_thread_entry(void* p)
 {
 	esp_err_t ret = ESP_OK;
 
@@ -296,7 +296,7 @@ static void sprinkler_thread_entry(void* p)
 	 * the mandatory services internally
 	 */
 	hap_acc_cfg_t cfg = {
-	    .name = (char*)"Sprinkler",
+	    .name = (char*)"Heat Pump",
 	    .model = (char*)"S1",
 	    .manufacturer = (char*)"Gormack",
 	    .serial_num = (char*)"001122334455",
@@ -304,7 +304,7 @@ static void sprinkler_thread_entry(void* p)
 	    .hw_rev = NULL,
 	    .pv = (char*)"1.0.0",
 	    .cid = HAP_CID_SPRINKLER,
-	    .identify_routine = sprinkler_identify,
+	    .identify_routine = heatpump_identify,
 	};
 	/* Create accessory object */
 	accessory = hap_acc_create(&cfg);
@@ -493,7 +493,7 @@ static void sprinkler_thread_entry(void* p)
 	/* Register an event handler for HomeKit specific events.
 	 * All event handlers should be registered only after app_wifi_init()
 	 */
-	esp_event_handler_register(HAP_EVENT, ESP_EVENT_ANY_ID, &sprinkler_hap_event_handler, NULL);
+	esp_event_handler_register(HAP_EVENT, ESP_EVENT_ANY_ID, &heatpump_hap_event_handler, NULL);
 
 	/* Start the schedule checker */
 	s_sched.start();
@@ -506,6 +506,6 @@ static void sprinkler_thread_entry(void* p)
 
 extern "C" void app_main()
 {
-	xTaskCreate(sprinkler_thread_entry, SPRINKLER_TASK_NAME, SPRINKLER_TASK_STACKSIZE, NULL, SPRINKLER_TASK_PRIORITY,
+	xTaskCreate(heatpump_thread_entry, HEATPUMP_TASK_NAME, HEATPUMP_TASK_STACKSIZE, NULL, HEATPUMP_TASK_PRIORITY,
 	            NULL);
 }

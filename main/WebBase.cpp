@@ -9,7 +9,7 @@ static const char *BASE_HTML = R"html(<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Sprinkler</title>
+  <title>Heat Pump</title>
   <style>
     body { font-family: sans-serif; max-width: 400px; margin: 60px auto; padding: 0 16px; text-align: center; }
     h1   { font-size: 1.6em; margin-bottom: 32px; }
@@ -22,7 +22,7 @@ static const char *BASE_HTML = R"html(<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <h1>&#127807; Sprinkler</h1>
+  <h1>&#127807; Heat Pump</h1>
   <a class="btn" href="/control">Valve Control &amp; Schedule</a>
   <a class="btn" href="/update">Firmware Update</a>
 </body>
